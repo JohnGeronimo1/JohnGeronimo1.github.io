@@ -22,8 +22,13 @@ function mooFunction(){
     var punctuation = text.charAt(text.length-1);
     var parts = text.split(" ");
     var lastElement = parts[parts.length-1];
-    lastElement = lastElement.substring(0,lastElement.length-1);
-    lastElement += "_Moo" + punctuation;
+    if(!punctuation.match(/[a-z]/i)){
+        lastElement = lastElement.substring(0,lastElement.length-1);
+        lastElement += "_Moo" + punctuation;
+    }
+    else{
+        lastElement += "_Moo";
+    }
     parts[parts.length-1] = lastElement;
     text = parts.join("_");
     document.getElementById("textarea").value = text.toUpperCase();
